@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarques <amarques@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 16:13:04 by amarques          #+#    #+#             */
-/*   Updated: 2022/09/07 16:54:31 by amarques         ###   ########.fr       */
+/*   Created: 2022/02/18 12:26:04 by amarques          #+#    #+#             */
+/*   Updated: 2022/03/04 12:15:04 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h" 
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (ac != 2)
-		return(ft_printf("Use:./so_long <path/to/map>\n"));
-	if (ber_checker(av) == 0)
-		return(ft_printf("Wrong file type\n"));
+	size_t	i;
+
+	if (!dst && !src)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dst);
 }

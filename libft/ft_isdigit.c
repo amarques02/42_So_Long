@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarques <amarques@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 16:13:04 by amarques          #+#    #+#             */
-/*   Updated: 2022/09/07 16:54:31 by amarques         ###   ########.fr       */
+/*   Created: 2022/02/14 16:21:49 by amarques          #+#    #+#             */
+/*   Updated: 2022/02/17 13:37:07 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h" 
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_isdigit(int c)
 {
-	if (ac != 2)
-		return(ft_printf("Use:./so_long <path/to/map>\n"));
-	if (ber_checker(av) == 0)
-		return(ft_printf("Wrong file type\n"));
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 13:51:44 by amarques          #+#    #+#             */
-/*   Updated: 2022/09/07 16:19:11 by amarques         ###   ########.fr       */
+/*   Created: 2022/09/07 16:12:59 by amarques          #+#    #+#             */
+/*   Updated: 2022/09/07 16:47:28 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000
-# endif
+#include "../mlx_linux/mlx.h"
+#include <stdlib.h>
+#include "ft_printf.h"
+#include "get_next_line.h"
+#include "../libft/libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img[7];
+}	t_mlx; 
 
-char	*joinstr(char *line, char *cloud);
-char	nl_check(char *cloud);
-char	*get_next_line(int fd);
+typedef struct s_map
+{
+}	t_map;
+
+int	ber_checker(char **av);
 
 #endif

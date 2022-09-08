@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarques <amarques@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 16:13:04 by amarques          #+#    #+#             */
-/*   Updated: 2022/09/07 16:54:31 by amarques         ###   ########.fr       */
+/*   Created: 2022/02/28 18:37:27 by amarques          #+#    #+#             */
+/*   Updated: 2022/03/01 12:56:26 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h" 
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (ac != 2)
-		return(ft_printf("Use:./so_long <path/to/map>\n"));
-	if (ber_checker(av) == 0)
-		return(ft_printf("Wrong file type\n"));
+	int	i;
+
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

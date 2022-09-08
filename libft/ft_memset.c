@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarques <amarques@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 16:13:04 by amarques          #+#    #+#             */
-/*   Updated: 2022/09/07 16:54:31 by amarques         ###   ########.fr       */
+/*   Created: 2022/02/16 16:51:13 by amarques          #+#    #+#             */
+/*   Updated: 2022/03/08 16:59:55 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h" 
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (ac != 2)
-		return(ft_printf("Use:./so_long <path/to/map>\n"));
-	if (ber_checker(av) == 0)
-		return(ft_printf("Wrong file type\n"));
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)b)[i] = c;
+		i++;
+	}
+	return (b);
 }

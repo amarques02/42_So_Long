@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarques <amarques@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 16:13:04 by amarques          #+#    #+#             */
-/*   Updated: 2022/09/07 16:54:31 by amarques         ###   ########.fr       */
+/*   Created: 2022/02/23 16:39:42 by amarques          #+#    #+#             */
+/*   Updated: 2022/02/25 17:00:34 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h" 
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (ac != 2)
-		return(ft_printf("Use:./so_long <path/to/map>\n"));
-	if (ber_checker(av) == 0)
-		return(ft_printf("Wrong file type\n"));
+	void	*s;
+
+	s = (void *)malloc(count * size);
+	if (!s)
+		return (0);
+	ft_bzero(s, count * size);
+	return (s);
 }

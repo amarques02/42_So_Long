@@ -1,4 +1,5 @@
-SRCS		= $(SRCS_DIR)/main.c
+SRCS		=	$(SRCS_DIR)/main.c\
+				$(SRCS_DIR)/checkers.c\
 
 SRCS_DIR	= srcs
 
@@ -9,6 +10,8 @@ OBJS_DIR	= objs
 MLX			= mlx_linux/libmlx_Linux.a
 
 PRINTF		= printf/libftprintf.a
+
+LIBFT		= libft/libft.a
 
 CC		=	gcc
 CFLAGS		= -g -Wall -Wextra -Werror #-fsanitize=address
@@ -21,15 +24,17 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	mkdir -p $(OBJS_DIR)
 	$(CC) $(CFLAGS) -I/usr/headers -Imlx_linux -O3 -c $< -o $@
 
-$(NAME):	$(PRINTF) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -Lprintf -lftprintf -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-
+$(NAME):	$(LIBFT) $(PRINTF) $(MLX) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -Lprintf -lftprintf -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 $(MLX):
 	make -C mlx_linux
 
 $(PRINTF):
 	make -C printf
+
+$(LIBFT):
+	make -C libft
 
 clean:
 			$(RM)	$(OBJS)
