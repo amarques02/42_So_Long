@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkers.c                                         :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 16:37:27 by amarques          #+#    #+#             */
-/*   Updated: 2022/10/11 15:34:08 by amarques         ###   ########.fr       */
+/*   Created: 2022/10/20 13:54:58 by amarques          #+#    #+#             */
+/*   Updated: 2022/10/20 13:55:10 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	ber_checker(char **av)
+int key(int keycode, void *param)
 {
-	char *dot;
-	
-	dot = ft_strrchr(av[1], '.');
-	if (dot && !ft_strncmp(dot, ".ber", 5))
-		return(1);
+	t_mlx	*data;
+	data = param;
+	/* ft_printf("%d\n", keycode); */
+	if (keycode == 65307)
+		exit_game(data);
+
 	return (0);
 }

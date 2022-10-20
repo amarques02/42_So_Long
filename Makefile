@@ -1,5 +1,13 @@
 SRCS		=	$(SRCS_DIR)/main.c\
 				$(SRCS_DIR)/checkers.c\
+				$(SRCS_DIR)/map_to_string.c\
+				$(SRCS_DIR)/get_next_line.c\
+				$(SRCS_DIR)/get_next_line_utils.c\
+				$(SRCS_DIR)/window_create.c\
+				$(SRCS_DIR)/map_render.c\
+				$(SRCS_DIR)/exit_game.c\
+				$(SRCS_DIR)/move.c\
+
 
 SRCS_DIR	= srcs
 
@@ -14,7 +22,7 @@ PRINTF		= printf/libftprintf.a
 LIBFT		= libft/libft.a
 
 CC		=	gcc
-CFLAGS		= -g -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS		= -g -Wall -Wextra -Werror #-g -fsanitize=address
 RM			= rm -fr
 NAME		= so_long
 

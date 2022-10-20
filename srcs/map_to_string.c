@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkers.c                                         :+:      :+:    :+:   */
+/*   map_to_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 16:37:27 by amarques          #+#    #+#             */
-/*   Updated: 2022/10/11 15:34:08 by amarques         ###   ########.fr       */
+/*   Created: 2022/09/12 18:33:46 by amarques          #+#    #+#             */
+/*   Updated: 2022/09/30 18:12:55 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	ber_checker(char **av)
+char **map_to_string(char **map, int fd, int i)
 {
-	char *dot;
+	char	*str;
 	
-	dot = ft_strrchr(av[1], '.');
-	if (dot && !ft_strncmp(dot, ".ber", 5))
-		return(1);
-	return (0);
+	str = get_next_line(fd);
+	if (str)
+		map = map_to_string(map, fd, i + 1);
+	if (!map && i != 0)
+		map = malloc((i + 1) * sizeof(char *));
+	if (!map)
+		return (0);
+	map[i] = str;
+	return (map);
 }

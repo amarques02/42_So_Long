@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarques <amarques@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 13:51:28 by amarques          #+#    #+#             */
-/*   Updated: 2022/05/25 18:00:04 by amarques         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:42:57 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
