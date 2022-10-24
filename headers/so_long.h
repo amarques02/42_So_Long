@@ -6,7 +6,7 @@
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:12:59 by amarques          #+#    #+#             */
-/*   Updated: 2022/10/20 13:55:25 by amarques         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:37:41 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ typedef struct s_mlx
 	void	*win;
 	void	**img;
 	char	**map;
+	int		player_x;
+	int		player_y;
+	int		collectable;
 }	t_mlx; 
 
 int	ber_checker(char **av);

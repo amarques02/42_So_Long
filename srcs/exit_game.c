@@ -6,7 +6,7 @@
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:32:44 by amarques          #+#    #+#             */
-/*   Updated: 2022/10/20 13:47:21 by amarques         ###   ########.fr       */
+/*   Updated: 2022/10/24 13:00:34 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int exit_game(t_mlx	*data)
 	if (data->map)
 	{
 		while (data->map[i])
-		{
 			free(data->map[i++]);
-		}
 		free(data->map);
 	}
 	i = 0;
