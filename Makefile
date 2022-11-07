@@ -7,7 +7,7 @@ SRCS		=	$(SRCS_DIR)/main.c\
 				$(SRCS_DIR)/map_render.c\
 				$(SRCS_DIR)/exit_game.c\
 				$(SRCS_DIR)/move.c\
-
+				$(SRCS_DIR)/img_loads.c\
 
 SRCS_DIR	= srcs
 
@@ -21,7 +21,7 @@ PRINTF		= printf/libftprintf.a
 
 LIBFT		= libft/libft.a
 
-CC		=	gcc
+CC			= gcc
 CFLAGS		= -g -Wall -Wextra -Werror #-g -fsanitize=address
 RM			= rm -fr
 NAME		= so_long
