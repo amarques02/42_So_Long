@@ -6,7 +6,7 @@
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:12:59 by amarques          #+#    #+#             */
-/*   Updated: 2022/10/31 16:14:46 by amarques         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:52:04 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ char	**map_to_string(char **map, int fd, int i);
 int		map_length(char **map);
 int		map_height(char **map);
 void	render(t_mlx *data);
-int		exit_game(t_mlx	*data);
 int		key(int keycode, void *param, t_mlx *data);
 int		animation(void *param);
 void	load_img(t_mlx *data, int i);
