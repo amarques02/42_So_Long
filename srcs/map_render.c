@@ -6,60 +6,85 @@
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 12:12:38 by amarques          #+#    #+#             */
-/*   Updated: 2022/10/24 16:38:28 by amarques         ###   ########.fr       */
+/*   Updated: 2022/11/07 14:12:48 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-
-static void load_img(t_mlx *data, int i)
+static void	animation_render(t_mlx *data)
 {
-	data->img = malloc(9 * sizeof(void *));
-	if (!data->img)
-		return ;
-	data->img[0] = mlx_xpm_file_to_image(data->mlx, "assets/floor.xpm", &i, &i);
-	data->img[1] = mlx_xpm_file_to_image(data->mlx, "assets/wall.xpm", &i, &i);
-	data->img[2] = mlx_xpm_file_to_image(data->mlx, "assets/playerright.xpm", &i, &i);
-	data->img[3] = mlx_xpm_file_to_image(data->mlx, "assets/playerleft.xpm", &i, &i);
-	data->img[4] = mlx_xpm_file_to_image(data->mlx, "assets/playerup.xpm", &i, &i);
-	data->img[5] = mlx_xpm_file_to_image(data->mlx, "assets/playerdown.xpm", &i, &i);
-	data->img[6] = mlx_xpm_file_to_image(data->mlx, "assets/exit2.xpm", &i, &i);
-	data->img[7] = mlx_xpm_file_to_image(data->mlx, "assets/capy2.xpm", &i, &i);
-	data->img[8] = NULL;
-}
-
-void render(t_mlx *data)
-{
-	int	i;
 	int	j;
-	
+	int	i;
+
 	j = 0;
-	load_img(data, 64);
-	while(data->map[j])
+	while (data->map[j])
 	{
 		i = 0;
-		while(data->map[j][i])
+		while (data->map[j][i])
 		{
-			if (data->map[j][i] == '1')
-				mlx_put_image_to_window(data->mlx, data->win, data->img[1], (i * 64), (j * 64));
-			else if (data->map[j][i] == '0')
-				mlx_put_image_to_window(data->mlx, data->win, data->img[0], (i * 64), (j * 64));
-			else if (data->map[j][i] == 'P')
-			{
-				data->player_x = i * 64;
-				data->player_y = j * 64;
-				mlx_put_image_to_window(data->mlx, data->win, data->img[5], (i * 64), (j * 64));
-			}
-			else if (data->map[j][i] == 'E')
-				mlx_put_image_to_window(data->mlx, data->win, data->img[6], (i * 64), (j * 64));
-			else if (data->map[j][i] == 'C')
-			{
-				mlx_put_image_to_window(data->mlx, data->win, data->img[7], (i * 64), (j * 64));
-				data->collectable++;
-			}
+			if (data->map[j][i] == 'C')
+				mlx_put_image_to_window(data->mlx, data->win, data->animation, \
+				(i * 64), (j * 64));
+			if (data->map[j][i] == 'X')
+				mlx_put_image_to_window(data->mlx, data->win, data->animation_e \
+				, (i * 64), (j * 64));
 			i++;
 		}
 		j++;
+	}
+}
+
+int	animation(void *param)
+{
+	static int	count;
+	static int	i = 7;
+	static int	i_e = 14;
+	static int	swap = 1;
+	t_mlx		*data;
+
+	data = param;
+	if (count == 15000)
+	{
+		data->animation = data->img[i];
+		data->animation_e = data->img[i_e];
+		animation_render(data);
+		i += swap;
+		i_e += swap;
+		if (i == 7 || i == 13)
+			swap *= -1;
+		count = 0;
+	}
+	else
+		count++;
+	return (0);
+}
+
+void	render(t_mlx *data)
+{
+	int	i;
+	int	j;
+
+	j = -1;
+	load_img(data, 64);
+	while (data->map[++j])
+	{
+		i = -1;
+		while (data->map[j][++i])
+		{
+			if (data->map[j][i] == 'P')
+			{
+				data->player_x = i * 64;
+				data->player_y = j * 64;
+			}
+			if (data->map[j][i] == 'C')
+				data->collectable++;
+			mlx_put_image_to_window(data->mlx, data->win, \
+			data->img[(data->map[j][i] == 'P') * 5 + \
+			(data->map[j][i] == '0') * 0 + (data->map[j][i] == 'C') * 7 \
+			+ (data->map[j][i] == 'E') * 6 + (data->map[j][i] == 'X') * \
+			14 + (data->map[j][i] == '1') * 1] \
+			, i * 64, j * 64);
+		}
 	}
 }
