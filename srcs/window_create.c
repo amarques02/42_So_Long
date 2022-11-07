@@ -6,7 +6,7 @@
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 12:02:29 by amarques          #+#    #+#             */
-/*   Updated: 2022/10/24 12:32:43 by amarques         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:55:21 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 int	map_length(char **map)
 {
 	int	i;
-	
+
 	i = 0;
-	while (map[0][i])
+	while (map[0][i] && map[0][i] != '\n')
 		i++;
-	return(i - 1);
+	return (i);
 }
 
 int	map_height(char **map)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (map[i])
 		i++;
-	return(i);
+	return (i);
 }
