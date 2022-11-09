@@ -6,11 +6,17 @@
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:13:04 by amarques          #+#    #+#             */
-/*   Updated: 2022/11/07 16:31:09 by amarques         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:52:17 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
+
+static int	exit_prog(t_mlx *data)
+{
+	print_error(data, "Game Closed", 0);
+	return (0);
+}
 
 int	ber_checker(char **av)
 {
@@ -65,13 +71,14 @@ int	main(int ac, char **av)
 	data.map = map_to_string(NULL, fd, 0);
 	if (data.map == NULL)
 		print_error(&data, "Empty map", 1);
+	close(fd);
 	validater(&data, 0, 0);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, map_length(data.map) * 64,
-			(map_height(data.map) * 64) + 64, "So Long");
+			(map_height(data.map) * 64) + 64, "So_Long");
 	render(&data);
 	mlx_hook(data.win, 02, (1L << 0), key, &data);
-	mlx_hook(data.win, 17, (1L << 2), exit_game, &data);
+	mlx_hook(data.win, 17, (1L << 2), exit_prog, &data);
 	mlx_loop_hook(data.mlx, animation, &data);
 	mlx_loop(data.mlx);
 }
