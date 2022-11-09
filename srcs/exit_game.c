@@ -6,13 +6,13 @@
 /*   By: amarques <amarques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:32:44 by amarques          #+#    #+#             */
-/*   Updated: 2022/11/07 15:35:29 by amarques         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:41:26 by amarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-static	void	exit_game2(t_mlx *data)
+static	void	exit_game2(t_mlx *data, int status)
 {
 	int	i;
 
@@ -30,10 +30,10 @@ static	void	exit_game2(t_mlx *data)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
-	exit (0);
+	exit (status);
 }
 
-int	exit_game(t_mlx	*data)
+static int	exit_game(t_mlx	*data, int status)
 {
 	int	i;
 
@@ -51,7 +51,7 @@ int	exit_game(t_mlx	*data)
 			free(data->tmp[i++]);
 		free(data->tmp);
 	}
-	exit_game2(data);
+	exit_game2(data, status);
 	return (1);
 }
 
@@ -60,6 +60,6 @@ int	print_error(t_mlx *data, char *str, int status)
 	if (status)
 		ft_printf("Error\n");
 	ft_printf("%s\n", str);
-	exit_game(data);
+	exit_game(data, status);
 	return (0);
 }
